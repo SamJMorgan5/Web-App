@@ -11,6 +11,7 @@
 
               <p>Posted By: {{ $post->user->name }}</p>
               <p>Tags: </p>
+
               @foreach ($post->tags as $tag)
                   {{ $tag->name }}
               @endforeach
@@ -31,7 +32,7 @@
               @endif
             </div>
             <div class="col-sm">
-              <img src="/public/images/{{ $post->image_location }}" width="75px" height="75px">
+              <img src="storage/app/public/images/{{ $post->image_location }}" width="75px" height="75px">
             </div>
           </div>
       </div>

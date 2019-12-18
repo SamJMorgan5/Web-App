@@ -71,7 +71,9 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container">
+          <h1>WebApp - @yield('title') </h1>
+        </div>
         <main class="py-4">
             @yield('content')
         </main>

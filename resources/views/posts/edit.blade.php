@@ -18,23 +18,18 @@
         @csrf
         @method('PUT')
 
-        <div class="form-group">
-        <p>Text: <input type="text" name="text"
-            value="{{ $post->text }}"></p>
-        </div>
+        <div class="container">
+          <div class="jumbotron">
+            <p>Text: <input type="text" name="text"
+              value="{{ $post->text }}"></p>
 
-        <div class="form-group">
-        <input id="profile_image" type="file" 
-            class="form-control" name="image_location" value="{{ $post->text }}"> 
-        </div>
-
-        <div class="form-group">
-        
-
-        <input type="submit" value="Submit">
-        <a href="{{ route('posts.index') }}">Cancel</a>
-
-        
+             <input id="profile_image" type="file"
+                class="container" name="image_location" value="{{ $post->text }}">
+                
+             <input type="submit" value="Submit">
+             <a href="{{ route('posts.index') }}">Cancel</a>
+           </div>
+         </div>
     </form>
 
 @endsection

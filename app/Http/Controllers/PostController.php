@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-public function __construct() 
+public function __construct()
 {
     $this->middleware('auth', ['except' => ['index', 'show']]);
 }
@@ -34,31 +34,34 @@ public function create()
 }
 
 public function store(Request $request)
-{   
+{
     $validateData = $request->validate([
         'text' => 'required|max:255'
     ]);
 
-    if($request->hasFile('image_location')){
-        $filenameExt = $request->file('image_location');
-        $filename = pathinfo($filenameExt, PATHINFO_FILENAME);
-        $extension = $request->file('image_location')->getClientOriginalExtension();
-        $filenameToStore =  $filename.'_'.time().'.'.$extension;
-        $path = $request->file('image_location')->storeAs('public/images', $filenameToStore);
-    } else {
-        
-    }
-    
     $p = new Post;
     $p->user_id = Auth::id();
     $p->text = $validateData['text'];
-    $p->image_location = $request->get('image_location');
+
+    if($request->hasFile('image_location')){
+        $filenameWithExt = $request->file('image_location');
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('image_location')->getClientOriginalExtension();
+        $filenameToStore =  $filename.'_'.time() .'.'. $extension;
+        $path = $request->file('image_location')->storeAs('public/images', $filenameToStore);
+        $p->image_location = $path;
+    } else {
+
+    }
+
+
+
     $p->save();
     $p->tags()->attach($request->tag1_id);
     $p->tags()->attach($request->tag2_id);
     $p->tags()->attach($request->tag3_id);
-    
-    
+
+
     session()->flash('message', 'Post created');
 
     return redirect()->route('posts.index');
