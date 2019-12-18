@@ -40,9 +40,8 @@
 
     <div class="container">
       <h1>Comments</h1>
-        <div class="jumbotron jumbotron-comment">
-            @foreach ($post->comments as $comment)
-                <div>
+          @foreach ($post->comments as $comment)
+            <div class="jumbotron jumbotron-comment">
                     <p>{{ $comment->text }}</p>
                     <p>{{ $comment->user->name }}</p>
 
@@ -59,9 +58,8 @@
                         </form>
                     @endif
                 @endif
+              </div>
             @endforeach
-          </div>
-        </div>
       </div>
 
     <div class="container">
