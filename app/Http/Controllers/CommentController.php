@@ -19,12 +19,12 @@ class CommentController extends Controller
         $comment = Post::findOrFail($id);
         return view('comments.show', ['comment' => $comment]);
     }
-    
-    public function store(Request $request) 
+
+    public function store(Request $request)
     {
         $validateData = $request->validate([
             'text' => 'required|max:255'
-        ]);   
+        ]);
         $c = new Comment;
         $c->user_id = Auth::id();
         $c->post_id = $request->get('post_id');
@@ -60,7 +60,7 @@ class CommentController extends Controller
         //
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -83,11 +83,15 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $validateData = $request->validate([
+          'text' => 'required|max:255'
+      ]);
+
         $comment = Comment::find($id);
-        $comment->text = $request->get('text');
+        $comment->text = $validateData['text'];
         $comment->save();
 
-        session()->flash('message', 'Comment updated');
+        session()->flash('message', 'Comment Updated');
 
         return redirect()->route('posts.index');
     }

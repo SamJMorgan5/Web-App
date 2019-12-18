@@ -3,6 +3,18 @@
 @section('title', 'Post')
 
 @section('content')
+
+    @if ($errors->any())
+        <div>
+            Errors:
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+    @endif
+    
     <div class="container">
       <div class="row">
           <div class="jumbotron">
