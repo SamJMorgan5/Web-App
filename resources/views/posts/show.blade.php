@@ -70,7 +70,7 @@
           <h2>New Comment</h2>
           Text: <input class="input-group" type="text" name="text" value="{{ old('text') }}">
           <input type="hidden" name="post_id" value="{{ $post->id }}" i>
-          <input type="submit" value="Submit">
+          <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
       @endif
   </div>
 

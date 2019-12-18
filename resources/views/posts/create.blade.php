@@ -17,7 +17,7 @@
       <form method="POST" action="{{ route('posts.store') }}" enctype = 'multipart/form-data'>
           @csrf
 
-          <p>Text: <input type="text" name="text"
+          <p>Text: <input class="input-group" type="text" name="text"
               value="{{ old('text') }}"></p>
 
           <p>Image: <input id="profile_image" type="file"
@@ -52,8 +52,8 @@
                   >{{ $tag->name }}</option>
               @endforeach
           </select>
-
-          <input type="submit" value="Submit">
+          <br>
+          <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
           <a href="{{ route('posts.index') }}">Cancel</a>
 
 

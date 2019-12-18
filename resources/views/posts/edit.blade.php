@@ -26,7 +26,7 @@
              <p>Image: <input id="profile_image" type="file"
                 name="image_location" value="{{ $post->text }}"></p>
 
-             <input type="submit" value="Submit">
+             <button class="btn btn-primary" type="submit">Submit</button>
              <a href="{{ route('posts.index') }}">Cancel</a>
            </div>
          </div>

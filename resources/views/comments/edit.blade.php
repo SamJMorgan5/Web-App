@@ -23,7 +23,7 @@
           <p>Text: <input class="input-group" type="text" name="text"
               value="{{ $comment->text }}"></p>
           </div>
-          <input type="submit" value="Submit">
+          <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
           <a href="{{ route('posts.index') }}">Cancel</a>
         </div>
 
