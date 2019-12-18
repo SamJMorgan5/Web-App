@@ -21,12 +21,12 @@
               <form method="POST" action="{{ route('posts.destroy', ['id' => $post->id]) }}">
                   @csrf
                   @method('DELETE')
-                  <input type="submit" value="Delete">
+                  <button class = "btn btn-primary" type="submit">Delete</button>
               </form>
 
               <form>
                   @csrf
-                  <button formaction="{{ route('posts.edit', ['id' => $post->id]) }}">Edit</button>
+                  <button class="btn btn-primary" formaction="{{ route('posts.edit', ['id' => $post->id]) }}">Edit</button>
               </form>
                   @endif
               @endif
@@ -42,7 +42,7 @@
     <div class="container">
       <h1>Comments</h1>
           @foreach ($post->comments as $comment)
-            <div class="jumbotron jumbotron-comment">
+            <div class="jumbotron">
                     <p>{{ $comment->text }}</p>
                     <p>{{ $comment->user->name }}</p>
 
@@ -51,11 +51,11 @@
                         <form method="POST" action="{{ route('comments.destroy', ['id' => $comment->id]) }}">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Delete">
+                        <button class = "btn btn-primary" type="submit">Delete</button>
                         </form>
 
                         <form>
-                        <button formaction="{{ route('comments.edit', ['id' => $comment->id]) }}">Edit</button>
+                        <button class="btn btn-primary" formaction="{{ route('comments.edit', ['id' => $comment->id]) }}">Edit</button>
                         </form>
                     @endif
                 @endif
@@ -68,7 +68,7 @@
         <form method="POST" action="{{ route('comments.store') }}">
           @csrf
           <h2>New Comment</h2>
-          Text: <input type="text" name="text" value="{{ old('text') }}">
+          Text: <input class="input-group" type="text" name="text" value="{{ old('text') }}">
           <input type="hidden" name="post_id" value="{{ $post->id }}" i>
           <input type="submit" value="Submit">
       @endif

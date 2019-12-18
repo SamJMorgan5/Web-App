@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit')
+@section('title', 'Edit Post')
 
 @section('content')
     @if ($errors->any())
@@ -20,12 +20,12 @@
 
         <div class="container">
           <div class="jumbotron">
-            <p>Text: <input type="text" name="text"
+            <p>Text: <input class="input-group" type="text" name="text"
               value="{{ $post->text }}"></p>
 
-             <input id="profile_image" type="file"
-                class="container" name="image_location" value="{{ $post->text }}">
-                
+             <p>Image: <input id="profile_image" type="file"
+                name="image_location" value="{{ $post->text }}"></p>
+
              <input type="submit" value="Submit">
              <a href="{{ route('posts.index') }}">Cancel</a>
            </div>

@@ -18,15 +18,15 @@
         @csrf
         @method('PUT')
 
-        <div class="form-group">
-        <p>Text: <input type="text" name="text"
-            value="{{ $comment->text }}"></p>
+        <div class="container">
+          <div class="call-md-6">
+          <p>Text: <input class="input-group" type="text" name="text"
+              value="{{ $comment->text }}"></p>
+          </div>
+          <input type="submit" value="Submit">
+          <a href="{{ route('posts.index') }}">Cancel</a>
         </div>
 
-        <input type="submit" value="Submit">
-        <a href="{{ route('posts.index') }}">Cancel</a>
-
-        
     </form>
 
 @endsection

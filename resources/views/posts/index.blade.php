@@ -30,13 +30,14 @@
         </div>
         @endforeach
     </ul>
-    </div>
 
-    <div class="container">
+
+
     <a href="{{ route('posts.create' )}}">Create Post</a>
-    </div>
 
+    
     {{ $posts->links() }}
+    </div>
 
 
 

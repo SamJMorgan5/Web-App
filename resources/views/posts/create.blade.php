@@ -13,48 +13,50 @@
                 </ul>
             </div>
     @endif
+    <div class="container">
+      <form method="POST" action="{{ route('posts.store') }}" enctype = 'multipart/form-data'>
+          @csrf
 
-    <form method="POST" action="{{ route('posts.store') }}" enctype = 'multipart/form-data'>
-        @csrf
-        <p>Text: <input type="text" name="text"
-            value="{{ old('text') }}"></p>
+          <p>Text: <input type="text" name="text"
+              value="{{ old('text') }}"></p>
 
-        <input id="profile_image" type="file" 
-            class="form-control" name="image_location">
+          <p>Image: <input id="profile_image" type="file"
+              name="image_location"></p>
 
-        <select name="tag1_id" multiple>
-            @foreach ($tags as $tag)
-                <option value="{{ $tag->id }}"
-                    @if ($tag->id == old('tag1_id'))
-                        selected="selected"
-                    @endif
-                >{{ $tag->name }}</option>
-            @endforeach    
-        </select>
+          <select name="tag1_id">
+              @foreach ($tags as $tag)
+                  <option value="{{ $tag->id }}"
+                      @if ($tag->id == old('tag1_id'))
+                          selected="selected"
+                      @endif
+                  >{{ $tag->name }}</option>
+              @endforeach
+          </select>
 
-        <select name="tag2_id">
-            @foreach ($tags as $tag)
-                <option value="{{ $tag->id }}"
-                    @if ($tag->id == old('tag2_id'))
-                        selected="selected"
-                    @endif
-                >{{ $tag->name }}</option>
-            @endforeach    
-        </select>
+          <select name="tag2_id">
+              @foreach ($tags as $tag)
+                  <option value="{{ $tag->id }}"
+                      @if ($tag->id == old('tag2_id'))
+                          selected="selected"
+                      @endif
+                  >{{ $tag->name }}</option>
+              @endforeach
+          </select>
 
-        <select name="tag3_id">
-            @foreach ($tags as $tag)
-                <option value="{{ $tag->id }}"
-                    @if ($tag->id == old('tag3_id'))
-                        selected="selected"
-                    @endif
-                >{{ $tag->name }}</option>
-            @endforeach  
-        </select>
+          <select name="tag3_id">
+              @foreach ($tags as $tag)
+                  <option value="{{ $tag->id }}"
+                      @if ($tag->id == old('tag3_id'))
+                          selected="selected"
+                      @endif
+                  >{{ $tag->name }}</option>
+              @endforeach
+          </select>
 
-        <input type="submit" value="Submit">
-        <a href="{{ route('posts.index') }}">Cancel</a>
+          <input type="submit" value="Submit">
+          <a href="{{ route('posts.index') }}">Cancel</a>
 
-        
-    </form>
+
+        </form>
+      </div>
 @endsection
