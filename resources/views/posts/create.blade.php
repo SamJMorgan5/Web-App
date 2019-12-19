@@ -3,6 +3,7 @@
 @section('title', 'Create Post')
 
 @section('content')
+    <div class = "container">
     @if ($errors->any())
         <div>
             Errors:
@@ -13,6 +14,7 @@
                 </ul>
             </div>
     @endif
+  </div>
     <div class="container">
       <form method="POST" action="{{ route('posts.store') }}" enctype = 'multipart/form-data'>
           @csrf
