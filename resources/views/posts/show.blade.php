@@ -59,7 +59,7 @@
 
     <div class="container">
       <h1>Comments</h1>
-          @foreach ($post->comments as $comment)
+          @foreach ($post->comments->reverse() as $comment)
             <div class="jumbotron">
                     <p>{{ $comment->text }}</p>
                     <p>Comment By: {{ $comment->user->name }}</p>
