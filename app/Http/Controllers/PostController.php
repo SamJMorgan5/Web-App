@@ -6,6 +6,8 @@ use App\Post;
 use App\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -17,7 +19,7 @@ public function __construct()
 
 public function index()
 {
-    $posts = Post::paginate(20);
+    $posts = Post::orderBy('created_at', 'desc')->paginate(20);
     return view('posts.index', ['posts' => $posts]);
 }
 
@@ -44,17 +46,18 @@ public function store(Request $request)
     $p->text = $validateData['text'];
 
     if($request->hasFile('image_location')){
-          $filenameWithExt = $request->file('image_location')->getClientOriginalName();
-          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-          $extension = $request->file('image_location')->getClientOriginalExtension();
-          $fileNameToStore= $filename.'_'.time().'.'.$extension;
-          $path = $request->file('image_location')->storeAs('public/images', $fileNameToStore);
+      $file = $request->file('image_location');
+      $ext = $file->getClientOriginalExtension();
+      $filename = $file->getFilename();
+      $fullfile = File::get($file);
+      echo($filename);
+      Storage::disk('local')->put($filename.'.'.$ext , $fullfile);
+      $p->image_location = $file->getFilename().'.'.$ext;
     } else {
-
+      echo('no image');
     }
 
 
-    $p->image_location = $fileNameToStore;
     $p->save();
     $p->tags()->attach($request->tag1_id);
     $p->tags()->attach($request->tag2_id);
