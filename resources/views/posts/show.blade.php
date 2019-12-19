@@ -14,20 +14,29 @@
                 </ul>
             </div>
     @endif
-    
+
     <div class="container">
-      <div class="row">
           <div class="jumbotron">
+            <div class="row">
             <div class="col-sm">
               <h5>{{ $post->text }}</h5>
 
               <p>Posted By: {{ $post->user->name }}</p>
-              <p>Tags: </p>
 
+
+            </div>
+
+            <div class="col-sm">
+              <img src="/storage/app/public/images/{{ $post->image_location }}" class="card-img" width="300px" height="300px">
+            </div>
+            </div>
+            <div class="row">
+              <p>Tags:
               @foreach ($post->tags as $tag)
-                  {{ $tag->name }}
-              @endforeach
-
+                  {{ $tag->name }},
+              @endforeach</p>
+            </div>
+            <div class="row">
               @if(!Auth::guest())
                   @if(Auth::user()->id == $post->user_id || Auth::user()->is_admin == 1)
               <form method="POST" action="{{ route('posts.destroy', ['id' => $post->id]) }}">
@@ -43,12 +52,9 @@
                   @endif
               @endif
             </div>
-            <div class="col-sm">
-              <img src="storage/app/public/images/{{ $post->image_location }}" width="75px" height="75px">
-            </div>
           </div>
       </div>
-    </div>
+
 
 
     <div class="container">
@@ -57,7 +63,7 @@
             <div class="jumbotron">
                     <p>{{ $comment->text }}</p>
                     <p>{{ $comment->user->name }}</p>
-
+                <div class="row">
                 @if(!Auth::guest())
                     @if(Auth::user()->id == $comment->user_id || Auth::user()->is_admin == 1)
                         <form method="POST" action="{{ route('comments.destroy', ['id' => $comment->id]) }}">
@@ -71,6 +77,7 @@
                         </form>
                     @endif
                 @endif
+              </div>
               </div>
             @endforeach
       </div>
