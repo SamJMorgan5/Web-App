@@ -44,18 +44,17 @@ public function store(Request $request)
     $p->text = $validateData['text'];
 
     if($request->hasFile('image_location')){
-        $filenameWithExt = $request->file('image_location');
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        $extension = $request->file('image_location')->getClientOriginalExtension();
-        $filenameToStore =  $filename.'_'.time() .'.'. $extension;
-        $path = $request->file('image_location')->storeAs('public/images', $filenameToStore);
-        $p->image_location = $path;
+          $filenameWithExt = $request->file('image_location')->getClientOriginalName();
+          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+          $extension = $request->file('image_location')->getClientOriginalExtension();
+          $fileNameToStore= $filename.'_'.time().'.'.$extension;
+          $path = $request->file('image_location')->storeAs('public/images', $fileNameToStore);
     } else {
 
     }
 
 
-
+    $p->image_location = $fileNameToStore;
     $p->save();
     $p->tags()->attach($request->tag1_id);
     $p->tags()->attach($request->tag2_id);

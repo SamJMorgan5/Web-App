@@ -62,7 +62,7 @@
           @foreach ($post->comments as $comment)
             <div class="jumbotron">
                     <p>{{ $comment->text }}</p>
-                    <p>{{ $comment->user->name }}</p>
+                    <p>Comment By: {{ $comment->user->name }}</p>
                 <div class="row">
                 @if(!Auth::guest())
                     @if(Auth::user()->id == $comment->user_id || Auth::user()->is_admin == 1)

@@ -13,7 +13,7 @@ class TagTableSeeder extends Seeder
     public function run()
     {
         $t = new Tag;
-        $t->name = "Funny";
+        $t->name = "-";
         $t->save();
 
         $t2 = new Tag;
@@ -23,5 +23,25 @@ class TagTableSeeder extends Seeder
         $t3 = new Tag;
         $t3->name = "Story";
         $t3->save();
+
+        $t4 = new Tag;
+        $t4->name = "Cooking";
+        $t4->save();
+
+        $t5 = new Tag;
+        $t5->name = "Coding";
+        $t5->save();
+
+        $t6 = new Tag;
+        $t6->name = "Golf";
+        $t6->save();
+
+        $t7 = new Tag;
+        $t7->name = "Music";
+        $t7->save();
+
+        $t8 = new Tag;
+        $t8->name = "Funny";
+        $t8->save();
     }
 }
