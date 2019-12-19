@@ -12,12 +12,11 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        //factory(App\Post::class, 50)->create();
-        $p = new Post;
-        $p->text = "This is a tag test";
-        $p->image_location = "Location";
-        $p->user_id = 1;
-        $p->save();
+        factory(App\Post::class, 50)->create();
+        //$p = new Post;
+        //$p->text = "This is a tag test";
+        //$p->image_location = "Location";
+        //$p->user_id = 1;
+        //$p->save();
     }
 }

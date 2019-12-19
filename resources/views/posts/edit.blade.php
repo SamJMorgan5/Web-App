@@ -3,6 +3,8 @@
 @section('title', 'Edit Post')
 
 @section('content')
+
+    <div class="container">
     @if ($errors->any())
         <div>
             Errors:
@@ -13,6 +15,7 @@
                 </ul>
             </div>
     @endif
+  </div>
 
     <form method="POST" action="{{ route('posts.update', $post->id) }}">
         @csrf

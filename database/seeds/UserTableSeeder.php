@@ -13,11 +13,6 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         factory(App\User::class, 50)->create();
-        $u = new User;
-        $u->name = "Ben";
-        $u->email = "ben@gmail.com";
-        $u->password = "password";
-        $u->is_admin = "0";
-        $u->save();
+
     }
 }

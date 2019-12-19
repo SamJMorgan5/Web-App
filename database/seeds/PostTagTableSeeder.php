@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Comment;
+use App\PostTag;
 
-class CommentTableSeeder extends Seeder
+class PostTagTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,6 @@ class CommentTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        factory(App\Comment::class, 100)->create();
+        //factory(App\PostTag::class, 50)->create();
     }
 }

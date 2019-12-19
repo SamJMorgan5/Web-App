@@ -4,16 +4,7 @@
 
 @section('content')
 
-    @if ($errors->any())
-        <div>
-            Errors:
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-            </div>
-    @endif
+
 
     <div class="container">
           <div class="jumbotron">
@@ -27,7 +18,7 @@
             </div>
 
             <div class="col-sm">
-              <img src="/storage/app/public/images/{{ $post->image_location }}" class="card-img" width="300px" height="300px">
+              <img src="/public/{{ $post->image_location }}" class="card-img" width="300px" height="300px">
             </div>
             </div>
             <div class="row">
@@ -81,6 +72,19 @@
               </div>
             @endforeach
       </div>
+
+    <div class="container">
+      @if ($errors->any())
+          <div>
+              Errors:
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+                  </ul>
+              </div>
+      @endif
+    </div>
 
     <div class="container">
       @if(!Auth::guest())
